@@ -1,0 +1,36 @@
+<nav class="navbar navbar-light bg-primary text-light">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="#">
+        <img src="../../assets/images/acs-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        ACS lunch booking
+      </a>
+    </div>
+  </nav>
+
+<div class="mt-4" style="text-align: -webkit-center;">
+     <mat-card class="example-card" style="width: 40%;">
+        <mat-card-header class="justify-content-center">
+          <mat-card-title>Login</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <form class="example-form">
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                  <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+              <td><mat-form-field class="example-full-width">
+                <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
+              </mat-form-field></td>
+            </tr></table>
+          </form>
+          <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="login()" color="primary">Login</button>
+        </mat-card-actions>
+      </mat-card></div>

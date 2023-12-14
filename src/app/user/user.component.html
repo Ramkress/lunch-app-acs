@@ -1,0 +1,54 @@
+<div style="width: 100%;">
+<nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../../assets/images/acs-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        HI   {{ receivedMessage }}
+      </a>
+    </div>
+  </nav>
+
+<div class="row justify-content-end pt-5">
+<div class="col-5">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          {{previousMonthText }} (last month)
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item "><div class="row"><div class="col-6">Days</div><div class="col-6">{{lastmonth}}</div></div></li>
+            <li class="list-group-item"><div class="row"><div class="col-6">Amount</div><div class="col-6">{{lastmonth * 10}}</div></div></li>
+        </ul>
+      </div>
+</div>
+<div class="col-5">
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+          {{currentMonthText}} (current month)
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item "><div class="row"><div class="col-6">Days</div><div class="col-6">{{currentmonthcount}}</div></div></li>
+            <li class="list-group-item"><div class="row"><div class="col-6">Amount</div><div class="col-6">{{currentmonthcount * 10}}</div></div></li>
+         
+        </ul>
+      </div>
+</div>
+</div>
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card text-center">
+            <div class="card-header">
+              BOOKING ON TODAY
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">MAIN COURSE</h5>
+              <p class="card-text">CHAPATI WITH MEALS</p>
+              <a href="#" class="btn btn-primary">BOOK LUNCH</a>
+            </div>
+            <div class="card-footer text-muted">
+           
+            </div>
+          </div>
+    </div>
+</div>
+</div>
+
