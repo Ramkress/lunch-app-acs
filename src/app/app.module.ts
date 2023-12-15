@@ -17,14 +17,16 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {FormsModule} from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
+import { BookingComponent } from './booking/booking.component'; 
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    LoginComponent
+    LoginComponent,
+    BookingComponent
   ],
   imports: [
     BrowserModule,

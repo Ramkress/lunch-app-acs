@@ -1,0 +1,7 @@
+/* styles.scss */
+/* @import '~bootstrap/dist/css/bootstrap.min.css'; */
+
+body, html {
+    margin: 0;
+    padding: 0;
+  }

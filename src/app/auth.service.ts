@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders ,HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as base64 from 'base-64';
 import * as utf8 from 'utf8';
@@ -39,29 +39,32 @@ export class AuthService {
 
 
 
-  // getProjectTimeEntries(userId: string, month: string): Observable<any> {
-  //   const url = `${this.apiUrl}/projects/lunch/time_entries.json`;
-  //   const getToken =this.getToken()
-  //   const headers = new HttpHeaders({
-  //     'Content-Type': 'application/json',
-  //     "Authorization": `Basic ${getToken}`,
-  //   });
+  getProjectTimeEntries(userId: string, month: string): Observable<any> {
+    const url = `${this.apiUrl}/projects/lunch/time_entries.json`;
+    const getToken =this.getToken()
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Authorization": `Basic ${getToken}`,
+    });
+   // Params
+   // Use HttpParams to properly encode parameters
+    // Use HttpParams to properly encode parameters
+    const params = new HttpParams()
+      .set('sort', 'spent_on:desc')
+      .set('f[]', 'user_id')
+      .set('op[spent_on]', 't')
+      .set('op[user_id]', '==')
+      .set('v[user_id][]', userId);
 
-  //   const params = {
-  //     sort: 'spent_on:desc',
-  //     'f[]': ['spent_on', 'user_id'],
-  //     'op[spent_on]': month,
-  //     'f[user_id]': '==',
-  //     'v[user_id][]': userId,
-  //   };
-
-  //   return this.http.get(url, { headers, params }).pipe(
-  //     catchError((error: any) => {
-  //       console.error('API Error:', error);
-  //       throw error;
-  //     })
-  //   );
-  // }
+   // Make the GET request
+  //  return this.http.get(url, { headers, params });
+   return this.http.get(url, { headers , params }).pipe(
+    catchError((error: any) => {
+      console.error('API Error:', error);
+      throw error;
+    })
+  );
+  }
   getcurrentmonthdata(userId: string, month: string): Observable<any> {
 
     const getToken =this.getToken()
@@ -85,6 +88,15 @@ export class AuthService {
   changeMessage(message: string) {
     console.log("message",message)
     this.messageSource.next(message);
+  }
+  getCustomFields(): Observable<any> {
+    const url = `${this.apiUrl}/custom_fields.json`;
+    const getToken =this.getToken()
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Authorization": `Basic YXBpX3VzZXI6QWNzQDIwMTc=`,
+    });
+    return this.http.get(url,{headers});
   }
 
 }

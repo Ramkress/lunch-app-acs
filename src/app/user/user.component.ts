@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 // import { Subscription } from 'rxjs';
+import { RouterModule, Router } from '@angular/router';
+import { subscribeOn } from 'rxjs';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -17,7 +19,7 @@ export class UserComponent implements OnInit {
   currentmonthcount : any = "";
   currentMonthText: string | undefined;
   previousMonthText: string | undefined;
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService,private routes: Router) {}
 
   ngOnInit(): void {
  
@@ -46,13 +48,13 @@ export class UserComponent implements OnInit {
 
   this.currentmonth(this.userId, this.month)
   this.currentmonth(this.userId, "lm")
+
   }
 
   currentmonth(user: string,month: string) :void{
     this.authService.getcurrentmonthdata(user,month).subscribe(
       (response) => {
         // Handle successful API response
-        console.log('API Response:', response);
       if(month=="m"){
         this.currentmonthcount = response.total_count
 
@@ -67,6 +69,23 @@ export class UserComponent implements OnInit {
         console.error('API Error:', error);
       }
     );
+  }
+  bookTodaylunch() :void{
+    console.log('kiiii')
+    // this.authService.getProjectTimeEntries(this.userId, this.month)
+    this.routes.navigate(["booking"]);
+    // this.authService.getProjectTimeEntries(this.userId,this.month).subscribe(
+    //   (response) => {
+    //     // Handle successful API response
+    //     console.log('API Response:', response);
+  
+    //   },
+    //   (error) => {
+    //     // Handle API error
+    //     console.error('API Error:', error);
+    //   }
+    // );
+    
   }
 
 
